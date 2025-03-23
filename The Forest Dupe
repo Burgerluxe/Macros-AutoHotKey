@@ -1,0 +1,30 @@
+; Reproducir sonido al abrir el script
+SoundPlay, C:\Windows\Media\Windows Notify.wav
+
+; Hotkey para cerrar el script con Control + F12
+^F12::  ; Control + F12
+ExitApp  ; Comando para salir completamente del script
+return
+
+; Variable para alternar el estado del hotkey "C"
+toggle_C := false  ; Estado inicial (hotkey C desactivado)
+
+; Hotkey para alternar la funcionalidad de "C" con F4
+F4::
+toggle_C := !toggle_C  ; Cambia el estado de la variable
+if (toggle_C) {
+    Hotkey, C, SpamEG, On  ; Activa el hotkey "C"
+} else {
+    Hotkey, C, SpamEG, Off  ; Desactiva el hotkey "C"
+}
+return
+
+; Función que spamea "E" y "G" durante 1 segundo con 40ms entre cada repetición
+SpamEG:
+startTime := A_TickCount  ; Momento en el que inicia el spameo
+while (A_TickCount - startTime < 1000) {  ; Mientras no pasen 1 segundo (1000 ms)
+    Send, {E down}{G down}  ; Presiona E y G
+    Sleep, 40  ; Espera 40 ms
+    Send, {E up}{G up}  ; Suelta E y G
+}
+return
