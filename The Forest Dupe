@@ -1,21 +1,21 @@
 ; Reproducir sonido al abrir el script
 SoundPlay, C:\Windows\Media\Windows Notify.wav
 
-; Hotkey para cerrar el script con Control + F12
-^F12::  ; Control + F12
+; Hotkey para cerrar el script con Control + Alt + X
+^!x::  ; Control + Alt + X
 ExitApp  ; Comando para salir completamente del script
 return
 
-; Variable para alternar el estado del hotkey "C"
-toggle_C := false  ; Estado inicial (hotkey C desactivado)
+; Variable para alternar el estado del hotkey "V"
+toggle_V := false  ; Estado inicial (hotkey V desactivado)
 
-; Hotkey para alternar la funcionalidad de "C" con F4
+; Hotkey para alternar la funcionalidad de "V" con F4
 F4::
-toggle_C := !toggle_C  ; Cambia el estado de la variable
-if (toggle_C) {
-    Hotkey, C, SpamEG, On  ; Activa el hotkey "C"
+toggle_V := !toggle_V  ; Cambia el estado de la variable
+if (toggle_V) {
+    Hotkey, V, SpamEG, On  ; Activa el hotkey "V"
 } else {
-    Hotkey, C, SpamEG, Off  ; Desactiva el hotkey "C"
+    Hotkey, V, SpamEG, Off  ; Desactiva el hotkey "V"
 }
 return
 
